@@ -1,0 +1,41 @@
+
+:root {
+  --primary-color: #161D25;
+  --secondary-color: #FFFFFF;
+  --third-color: #222933;
+}
+
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--primary-color);
+  color: #a5bbdc;
+  font-size: 12px;
+  font-family: sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+

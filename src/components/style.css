@@ -1,0 +1,208 @@
+.navbar_wrapper{
+    background-color: var(--third-color);
+    padding: 0 24px;
+    box-shadow: inset 0 -2px 0 #313842, inset 0 2px 0 #313842;
+
+
+}
+
+.navbar_container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1170px;
+    margin: 0 auto;
+
+}
+
+.navbar_logo{
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    
+}
+
+.navbar_list{
+    display: flex;
+    
+}
+
+.navbar_list_dropdown{
+    display: none;
+}
+/* #ushbu joydagi linklarni windth height ni 100% qilish keark */
+/* .navbar_list_item a{
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+
+} */
+.navbar_list_item{
+    padding: 40px 12px;
+    border-bottom: 2px solid red;
+    cursor: pointer;
+    
+}
+.navbar_list_item:hover{
+    background-color: rgba(255, 0, 0, 0.261);
+}
+
+
+
+.navbar_list_item:nth-child(1){
+    border-bottom: 2px solid #ff6907;
+}
+
+.navbar_list_item:nth-child(1):hover{
+    background-color: rgba(255, 105, 7, 0.261);
+}
+
+
+.navbar_list_item:nth-child(2){
+    border-bottom: 2px solid rgb(46 204 113 / 80%);
+}
+
+.navbar_list_item:nth-child(2):hover{
+    background-color: rgba(46, 204, 112, 0.356);
+}
+
+.navbar_list_item:nth-child(3){
+    border-bottom: 2px solid rgb(2 176 228 / 80%);
+}
+
+.navbar_list_item:nth-child(3):hover{
+    background-color: rgba(2, 175, 228, 0.382);
+}
+.navbar_list_item:nth-child(4){
+    border-bottom: 2px solid rgb(252 26 63 / 80%);
+}
+
+.navbar_list_item:nth-child(4):hover{
+    background-color: rgba(252, 26, 64, 0.383);
+}
+
+.navbar_list_item:nth-child(5){
+    border-bottom: 2px solid rgb(255 193 70 / 80%);
+}
+
+.navbar_list_item:nth-child(5):hover{
+    background-color: rgba(255, 193, 70, 0.307);
+}
+
+.navbar_list_item:nth-child(6){
+    border-bottom: 2px solid rgb(155 89 182 / 80%);
+}
+
+.navbar_list_item:nth-child(6):hover{
+    background-color: rgba(156, 89, 182, 0.349);
+}
+
+
+.navbar_list_item:nth-child(7){
+    border-bottom: 2px solid rgb(255 105 7 / 80%);
+}
+
+.navbar_list_item:nth-child(7):hover{
+    background-color: rgba(255, 106, 7, 0.337);
+}
+
+
+.navbar_list_item a{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+   
+
+}
+.menu-button{
+    display: none;
+}
+
+.navbar_list_mobile{
+    display: none;
+}
+@media (max-width: 1090px) {
+    .navbar_container{
+        padding: 10px 0;
+    }
+    .navbar_list{
+        display: none;
+    }
+    /* MenuButton.css */
+.menu-button {
+    display: flex;
+    align-items: center;
+
+    background: #3b2946;
+    color: #b3a5c9;
+    padding: 15px;
+    border-radius: 5px;gap: 10px;
+    font-size: 12px;
+    border: 1px solid #553f62;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .menu-button:hover {
+    background: #25192e;
+  }
+  
+  .menu-text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .menu-icon span {
+    width: 20px;
+    height: 2px;
+    background: #b3a5c9;
+    transition: 0.3s;
+  }
+
+
+  .navbar_list_mobile {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    display: block;
+    border-top: 2px solid #2c3541;
+    transition: max-height 1s ease-in-out;
+}
+
+.navbar_list_mobile_active {
+    max-height: 500px; /* Ekrandagi eng katta balandlikdan kelib chiqib, mos qiymat qo'ying */
+}
+  .navbar_mobile_list{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    
+ 
+    
+  }
+ 
+  .navbar_mobile_list .navbar_list_item{
+    padding: 10px 20px !important;
+    background-color: #213144;
+    border-radius: 3px;
+    cursor: pointer;
+ 
+  }
+
+  .navbar_logo img{
+    height: 40px;
+  }
+
+  
+}
+
+
