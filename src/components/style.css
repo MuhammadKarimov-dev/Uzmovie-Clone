@@ -12,7 +12,9 @@
     align-items: center;
     max-width: 1170px;
     margin: 0 auto;
-
+    position: relative;
+    width: 100%;
+    height: 80px;
 }
 
 .navbar_logo{
@@ -37,11 +39,9 @@
     display: block !important;
 
 } */
-.navbar_list_item{
-    padding: 40px 12px;
-    border-bottom: 2px solid red;
+.navbar_list_item {
+    padding: 29px 0.75rem;
     cursor: pointer;
-    
 }
 .navbar_list_item:hover{
     background-color: rgba(255, 0, 0, 0.261);
@@ -50,7 +50,7 @@
 
 
 .navbar_list_item:nth-child(1){
-    border-bottom: 2px solid #ff6907;
+    border-bottom: 0.063rem solid var(--border-orange);
 }
 
 .navbar_list_item:nth-child(1):hover{
@@ -59,7 +59,7 @@
 
 
 .navbar_list_item:nth-child(2){
-    border-bottom: 2px solid rgb(46 204 113 / 80%);
+    border-bottom: 0.063rem solid var(--border-green);
 }
 
 .navbar_list_item:nth-child(2):hover{
@@ -67,14 +67,14 @@
 }
 
 .navbar_list_item:nth-child(3){
-    border-bottom: 2px solid rgb(2 176 228 / 80%);
+    border-bottom: 0.063rem solid var(--border-blue);
 }
 
 .navbar_list_item:nth-child(3):hover{
     background-color: rgba(2, 175, 228, 0.382);
 }
 .navbar_list_item:nth-child(4){
-    border-bottom: 2px solid rgb(252 26 63 / 80%);
+    border-bottom: 0.063rem solid var(--border-red);
 }
 
 .navbar_list_item:nth-child(4):hover{
@@ -82,7 +82,7 @@
 }
 
 .navbar_list_item:nth-child(5){
-    border-bottom: 2px solid rgb(255 193 70 / 80%);
+    border-bottom: 0.063rem solid var(--border-yellow);
 }
 
 .navbar_list_item:nth-child(5):hover{
@@ -90,7 +90,7 @@
 }
 
 .navbar_list_item:nth-child(6){
-    border-bottom: 2px solid rgb(155 89 182 / 80%);
+    border-bottom: 0.063rem solid var(--border-purple);
 }
 
 .navbar_list_item:nth-child(6):hover{
@@ -99,7 +99,7 @@
 
 
 .navbar_list_item:nth-child(7){
-    border-bottom: 2px solid rgb(255 105 7 / 80%);
+    border-bottom: 0.063rem solid var(--border-orange);
 }
 
 .navbar_list_item:nth-child(7):hover{
@@ -108,12 +108,15 @@
 
 
 .navbar_list_item a{
-    font-size: 16px;
+    font-size: var(--font-sm);
     font-weight: 500;
-    color: var(--secondary-color);
+    color: var(--text-muted);
     text-transform: uppercase;
-   
-
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-bottom: 0.063rem solid transparent;
+    transition: all 0.3s ease;
 }
 .menu-button{
     display: none;
@@ -122,9 +125,106 @@
 .navbar_list_mobile{
     display: none;
 }
+
+
+.navbar_list_dropdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    background-color: #1c2733;
+    border: 1px solid #304156;
+    border-radius: 3px;
+    position: absolute;
+    bottom: calc(-100%);
+    left: 0;
+    width: 100%;
+    background-clip: padding-box;
+    transition: all 300ms ease-in;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+    gap: 8px;
+}
+.navbar_list_item_active{
+    /* Bu yerda umumiy stil bo'lmasligi kerak */
+}
+.active_bottm_nav{
+    opacity: 1 !important;
+    visibility: visible !important;
+    bottom: -170px !important;
+
+}
+.down_icon {
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    border-top: 0.125rem solid var(--text-muted);
+    border-right: 0.125rem solid var(--text-muted);
+    transform: rotate(135deg);
+    transition: transform 0.3s ease;
+    position: relative;
+    top: -0.125rem;
+}
+.navbar_list_dropdown_active{
+    opacity: 1 !important;
+    bottom: calc(-100% + -20px);
+}
+.navbar_list_dropdown li {
+    width: 23%;
+    list-style: none;
+    padding: 0;
+    margin: 6px;
+    background-color: #304156;
+    text-align: center;
+    border-radius: 3px;
+    transition: all 300ms ease-in;
+    min-width: 128px;
+}
+.navbar_list_dropdown li a {
+    font-size: 14px;
+    color: #a5bbdc;
+    text-transform: capitalize !important;
+    padding: 12px 8px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-bottom: none;
+}
+.navbar_list_dropdown li:hover{
+    background-color: rgba(46, 204, 112, 0.396);
+}
+
+/* Dropdown link uchun alohida stil */
+.dropdown_link {
+    cursor: pointer;
+}
+
+/* Har bir dropdown menu uchun hover ranglarini to'g'rilash */
+/* Kinolar (2-element) */
+.navbar_list_item:nth-child(2).navbar_list_item_active {
+    background-color: rgba(46, 204, 112, 0.356) !important;
+}
+
+/* Janr (4-element) */
+.navbar_list_item:nth-child(4).navbar_list_item_active {
+    background-color: rgba(252, 26, 64, 0.383) !important;
+}
+
+/* Yil (5-element) */
+.navbar_list_item:nth-child(5).navbar_list_item_active {
+    background-color: rgba(255, 193, 70, 0.307) !important;
+}
+
+/* Kinolar dropdown menyu pozitsiyasini o'zgartirish (2-element) */
+
 @media (max-width: 1090px) {
     .navbar_container{
-        padding: 10px 0;
+        height: auto;
+        padding: 15px 0;
     }
     .navbar_list{
         display: none;
@@ -133,38 +233,46 @@
 .menu-button {
     display: flex;
     align-items: center;
-
     background: #3b2946;
     color: #b3a5c9;
-    padding: 15px;
-    border-radius: 5px;gap: 10px;
-    font-size: 12px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    gap: 8px;
+    font-size: 14px;
     border: 1px solid #553f62;
     cursor: pointer;
-    transition: background 0.3s ease;
-  }
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    outline: none;
+}
   
-  .menu-button:hover {
+.menu-button:hover {
     background: #25192e;
-  }
+}
   
-  .menu-text {
-    font-size: 16px;
-    font-weight: bold;
-  }
+.menu-button:active {
+    transform: scale(0.98);
+}
   
-  .menu-icon {
+.menu-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+  
+.menu-icon {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-  }
+    gap: 3px;
+}
   
-  .menu-icon span {
-    width: 20px;
+.menu-icon span {
+    width: 18px;
     height: 2px;
     background: #b3a5c9;
     transition: 0.3s;
-  }
+    border-radius: 1px;
+}
 
 
   .navbar_list_mobile {
@@ -173,36 +281,371 @@
     overflow: hidden;
     display: block;
     border-top: 2px solid #2c3541;
-    transition: max-height 1s ease-in-out;
+    transition: max-height 0.7s ease-in-out;
+    background-color: #222933; /* Orqa fon rangi */
+    z-index: 100;
 }
 
 .navbar_list_mobile_active {
-    max-height: 500px; /* Ekrandagi eng katta balandlikdan kelib chiqib, mos qiymat qo'ying */
+    max-height: 1500px; /* Yetarli balandlik - barcha dropdown ochiq bo'lganda ham */
 }
   .navbar_mobile_list{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-bottom: 20px;
-    
- 
-    
+    gap: 5px; /* Elementlar orasidagi bo'shliq kamroq */
+    padding: 0 10px 10px 10px; /* Chetdan bo'shliq */
   }
  
   .navbar_mobile_list .navbar_list_item{
-    padding: 10px 20px !important;
+    padding: 0 !important;
     background-color: #213144;
     border-radius: 3px;
     cursor: pointer;
- 
+    margin-bottom: 5px;
+    border-left: none !important; /* Chap border yo'q */
+    overflow: hidden; /* Dropdown contentni chiqarmaslik uchun */
+  }
+
+  .navbar_mobile_list .navbar_list_item_button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: var(--font-sm);
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 12px 15px; /* Kattaroq padding */
+    cursor: pointer;
+  }
+
+  /* Mobil dropdown linklar uchun */
+  .navbar_mobile_list .navbar_list_item a {
+    padding: 12px 15px;
+    display: block;
+  }
+
+  /* Mobil dropdown menyu */
+  .navbar_mobile_list .navbar_list_dropdown {
+    position: static;
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+    background-color: #1c2733; /* Dropdown fon rangi */
+    border-top: 1px solid #2c3541;
+    border-radius: 0 0 3px 3px;
+  }
+
+  /* Mobil dropdown menyu - aktiv holatda */
+  .navbar_mobile_list .active_bottm_nav {
+    display: block !important;
+    bottom: auto !important;
+  }
+
+  /* Mobil dropdown elementlari */
+  .navbar_mobile_list .navbar_list_dropdown li {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+  .navbar_mobile_list .navbar_list_dropdown li a {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #2c354180;
+  }
+
+  .navbar_mobile_list .navbar_list_dropdown li:last-child a {
+    border-bottom: none;
+  }
+
+  /* Dropdown hoveri */
+  .navbar_mobile_list .navbar_list_dropdown li:hover {
+    background-color: #304156;
+  }
+
+  /* Mobil dropdown icon */
+  .navbar_mobile_list .dropdown_icon {
+    border-top: 0.125rem solid var(--text-muted);
+    border-right: 0.125rem solid var(--text-muted);
+    width: 8px;
+    height: 8px;
+    transform: rotate(135deg);
+    transition: transform 0.3s;
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  /* Dropdown icon aktiv holatda */
+  .navbar_mobile_list .dropdown_active .dropdown_icon {
+    transform: rotate(-45deg);
+  }
+
+  /* Mobil ekranlarga maxsus stillar */
+  @media (max-width: 576px) {
+    .navbar_mobile_list {
+        padding: 0 5px 5px 5px;
+    }
+    
+    .navbar_mobile_list .navbar_list_item_button,
+    .navbar_mobile_list .navbar_list_item a {
+        padding: 10px 12px;
+        font-size: var(--font-xs);
+    }
+    
+    .navbar_mobile_list .navbar_list_dropdown li a {
+        padding: 8px 12px;
+    }
   }
 
   .navbar_logo img{
-    height: 40px;
+    height: 2.5rem;
   }
 
   
+}
+
+/* Navbar list item active stillarini har bir menu uchun alohida belgilash */
+
+/* Bosh sahifa (1-element) uchun active */
+.navbar_list_item:nth-child(1).navbar_list_item_active {
+    background-color: rgba(255, 105, 7, 0.261) !important;
+}
+
+/* Kinolar (2-element) uchun active */
+.navbar_list_item:nth-child(2).navbar_list_item_active {
+    background-color: rgba(46, 204, 112, 0.356) !important;
+}
+
+/* Seriallar (3-element) uchun active */
+.navbar_list_item:nth-child(3).navbar_list_item_active {
+    background-color: rgba(2, 175, 228, 0.382) !important;
+}
+
+/* Janr (4-element) uchun active */
+.navbar_list_item:nth-child(4).navbar_list_item_active {
+    background-color: rgba(252, 26, 64, 0.383) !important;
+}
+
+/* Yil (5-element) uchun active */
+.navbar_list_item:nth-child(5).navbar_list_item_active {
+    background-color: rgba(255, 193, 70, 0.307) !important;
+}
+
+/* Mamlakat (6-element) uchun active */
+.navbar_list_item:nth-child(6).navbar_list_item_active {
+    background-color: rgba(156, 89, 182, 0.349) !important;
+}
+
+/* Kino yangiliklar (7-element) uchun active */
+.navbar_list_item:nth-child(7).navbar_list_item_active {
+    background-color: rgba(255, 106, 7, 0.337) !important;
+}
+
+/* Umumiy active stil o'rniga individual stil ishlatiladi */
+.navbar_list_item_active {
+    /* Bu yerda umumiy stil bo'lmasligi kerak */
+}
+
+/* Dropdown li elementlarning hover stillarini har bir menu uchun alohida belgilash */
+.navbar_list_item:nth-child(2) .navbar_list_dropdown li:hover {
+    background-color: rgba(46, 204, 112, 0.5) !important;
+}
+
+.navbar_list_item:nth-child(4) .navbar_list_dropdown li:hover {
+    background-color: rgba(252, 26, 64, 0.5) !important;
+}
+
+.navbar_list_item:nth-child(5) .navbar_list_dropdown li:hover {
+    background-color: rgba(255, 193, 70, 0.5) !important;
+}
+
+/* Active holatda down icon o'zgarishi */
+.navbar_list_item_active .down_icon {
+    transform: rotate(-45deg);
+    top: 0.125rem;
+}
+
+/* Mamlakat dropdown menu uchun stil */
+.navbar_list_item:nth-child(6) .navbar_list_dropdown li:hover {
+    background-color: rgba(155, 89, 182, 0.5) !important;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar_list_item {
+    padding: 1rem 0.5rem;
+  }
+  
+  .navbar_list_item a {
+    font-size: var(--font-xs);
+  }
+  
+  .navbar_logo img {
+    height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar_wrapper {
+    padding: 0 0.75rem;
+  }
+  
+  .menu-button {
+    padding: 0.625rem;
+  }
+  
+  .menu-text {
+    font-size: var(--font-xs);
+  }
+}
+
+/* Mobil ekranlar uchun dropdown */
+@media (max-width: 768px) {
+  .navbar_list_dropdown {
+    position: static;
+    margin-top: 10px;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .active_bottm_nav {
+    display: flex;
+    flex-direction: column;
+    bottom: auto !important; /* Mobil qurilmalarda bottom qiymati ishlatilmaydi */
+  }
+  
+  .menu-button {
+    padding: 8px 12px; /* Kichik ekranlar uchun padding kamaytirildi */
+  }
+  
+  .menu-text {
+    font-size: 12px; /* Kichikroq font*/
+  }
+  
+  .menu-icon span {
+    width: 16px; /* Kichikroq iconlar */
+    height: 1.5px;
+  }
+}
+
+/* O'rta ekranlar uchun */
+@media (max-width: 992px) and (min-width: 769px) {
+  .navbar_list_dropdown li {
+    width: 30%; /* Har bir element 3ta qatorga joylashadi */
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Juda kichik ekranlar uchun */
+@media (max-width: 576px) {
+  .navbar_list_dropdown {
+    padding: 0.5rem;
+  }
+  
+  .navbar_list_dropdown li {
+    width: 100%; /* Juda kichik ekranlarda har bir element to'liq kenglikni egallaydi */
+    margin: 0.25rem 0;
+  }
+}
+
+/* Har bir menu uchun down_icon rangini alohida belgilash */
+.navbar_list_item:nth-child(1) .down_icon {
+    border-top-color: var(--text-muted);
+    border-right-color: var(--text-muted);
+}
+
+.navbar_list_item:nth-child(2) .down_icon {
+    border-top-color: var(--text-muted);
+    border-right-color: var(--text-muted);
+}
+
+.navbar_list_item:nth-child(4) .down_icon {
+    border-top-color: var(--text-muted);
+    border-right-color: var(--text-muted);
+}
+
+.navbar_list_item:nth-child(5) .down_icon {
+    border-top-color: var(--text-muted);
+    border-right-color: var(--text-muted);
+}
+
+.navbar_list_item:nth-child(6) .down_icon {
+    border-top-color: var(--text-muted);
+    border-right-color: var(--text-muted);
+}
+
+/* Har bir menu uchun alohida selectorlar - endi hammasi bir xil qiymatga ega */
+
+/* Dropdown menyuga qo'shimcha stil - pasga siljishi */
+
+
+/* Mobile dropdown menu uchun qo'shimcha stil */
+@media (max-width: 1090px) {
+    .navbar_container {
+        height: auto;
+        padding: 15px 0;
+    }
+    
+    .navbar_mobile_list .navbar_list_item {
+        border-left: 3px solid transparent;
+        transition: all 0.3s ease;
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(1) {
+        border-left-color: var(--border-orange);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(2) {
+        border-left-color: var(--border-green);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(3) {
+        border-left-color: var(--border-blue);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(4) {
+        border-left-color: var(--border-red);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(5) {
+        border-left-color: var(--border-yellow);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(6) {
+        border-left-color: var(--border-purple);
+    }
+    
+    .navbar_mobile_list .navbar_list_item:nth-child(7) {
+        border-left-color: var(--border-orange);
+    }
+}
+
+/* Mobil dropdown elementlari uchun aktiv stillar */
+.navbar_mobile_list .dropdown_active {
+  background-color: #28394e;
+}
+
+/* Mobil dropdown item bosilganda effekt */
+.navbar_mobile_list .navbar_list_dropdown li:active {
+  background-color: #3a5274;
+}
+
+/* Desktop dropdown item bosilganda effekt */
+.navbar_list_dropdown li:active {
+  opacity: 0.8;
+  transform: scale(0.98);
 }
 
 

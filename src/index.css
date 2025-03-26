@@ -1,16 +1,57 @@
-
 :root {
+  /* Asosiy ranglar */
   --primary-color: #161D25;
   --secondary-color: #FFFFFF;
   --third-color: #222933;
+  
+  /* Qo'shimcha ranglar */
+  --text-light: #FFFFFF;
+  --text-muted: #a5bbdc;
+  --text-dark: #99a3af;
+  
+  /* Border ranglar */
+  --border-orange: #ff6907;
+  --border-green: rgba(46, 204, 113, 0.8);
+  --border-blue: rgba(2, 176, 228, 0.8);
+  --border-red: rgba(252, 26, 63, 0.8);
+  --border-yellow: rgba(255, 193, 70, 0.8);
+  --border-purple: rgba(155, 89, 182, 0.8);
+  
+  /* Hover ranglar */
+  --hover-orange: rgba(255, 105, 7, 0.261);
+  --hover-green: rgba(46, 204, 112, 0.356);
+  --hover-blue: rgba(2, 175, 228, 0.382);
+  --hover-red: rgba(252, 26, 64, 0.383);
+  --hover-yellow: rgba(255, 193, 70, 0.307);
+  --hover-purple: rgba(156, 89, 182, 0.349);
+  
+  /* O'lchamlar */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Font o'lchamlari */
+  --font-xs: 0.75rem;  /* 12px */
+  --font-sm: 0.875rem; /* 14px */
+  --font-md: 1rem;     /* 16px */
+  --font-lg: 1.25rem;  /* 20px */
+  --font-xl: 1.5rem;   /* 24px */
+
+  /* Border radius */
+  --border-radius-sm: 0.188rem; /* 3px */
+  --border-radius-md: 0.313rem; /* 5px */
 }
-
-
 
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Asosiy o'lcham, 1rem = 16px */
 }
 
 html, body, #root {
@@ -19,8 +60,8 @@ html, body, #root {
 
 body {
   background-color: var(--primary-color);
-  color: #a5bbdc;
-  font-size: 12px;
+  color: var(--text-muted);
+  font-size: var(--font-xs);
   font-family: sans-serif;
 }
 
@@ -37,5 +78,12 @@ ul{
 a{
   text-decoration: none;
   color: var(--secondary-color);
+}
+
+/* Responsive media queries */
+@media (max-width: 768px) {
+  html {
+    font-size: 14px; /* Mobil qurilmalarda kichikroq font o'lchami */
+  }
 }
 
