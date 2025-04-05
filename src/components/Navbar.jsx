@@ -155,7 +155,7 @@ const Navbar = () => {
                   {item.title} <span className="down_icon"></span>
                 </Link>
               ) : (
-                <Link to={item.path} onClick={handleDesktopItemClick}>
+                <Link to={item.path} onClick={handleDesktopItemClick} className="linkitem">
                   {item.title}
                 </Link>
               )}
@@ -164,7 +164,7 @@ const Navbar = () => {
                 <ul className={`navbar_list_dropdown ${activeDropdowns[item.id] ? "active_bottm_nav" : ""}`}>
                   {item.dropdownItems.map((dropItem) => (
                     <li key={dropItem.id} onClick={handleDesktopItemClick}>
-                      <Link to={dropItem.path}>{dropItem.title}</Link>
+                      <Link to={dropItem.path} className="dropdown_item_link">{dropItem.title}</Link>
                     </li>
                   ))}
                 </ul>

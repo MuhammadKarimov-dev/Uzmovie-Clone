@@ -21,7 +21,52 @@
     display: flex;
     align-items: center;
     margin: 5px 0;
-    
+}
+
+.navbar_logo img{
+    height: 3rem; /* Logo asosiy o'lchami kattalashtirildi */
+    min-width: 120px; /* Minimal kenglik qo'shildi */
+    object-fit: contain; /* Tasvirni saqlab qolish uchun */
+}
+
+/* Kattaroq ekranlarda logo o'lchami */
+@media (min-width: 1200px) {
+  .navbar_logo img {
+    height: 3.2rem;
+    min-width: 140px;
+  }
+}
+
+/* O'rta o'lchamdagi ekranlarda logo o'lchami */
+@media (max-width: 992px) {
+  .navbar_logo img {
+    height: 2.8rem;
+    min-width: 110px;
+  }
+}
+
+/* Planshet o'lchamdagi ekranlarda logo o'lchami */
+@media (max-width: 768px) {
+  .navbar_logo img {
+    height: 2.5rem;
+    min-width: 100px;
+  }
+}
+
+/* Mobil telefon o'lchamdagi ekranlarda logo o'lchami */
+@media (max-width: 480px) {
+  .navbar_logo img {
+    height: 2.3rem; /* Minimal o'lcham oshirildi */
+    min-width: 90px;
+  }
+}
+
+/* Juda kichik ekranlarda logo o'lchami */
+@media (max-width: 360px) {
+  .navbar_logo img {
+    height: 2.2rem; /* Minimal o'lcham oshirildi */
+    min-width: 85px;
+  }
 }
 
 .navbar_list{
@@ -40,8 +85,11 @@
 
 } */
 .navbar_list_item {
-    padding: 29px 0.75rem;
+    padding: 0;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
 }
 .navbar_list_item:hover{
     background-color: rgba(255, 0, 0, 0.261);
@@ -107,14 +155,18 @@
 }
 
 
-.navbar_list_item a{
+.navbar_list_item a,
+.navbar_list_item .dropdown_link {
     font-size: var(--font-sm);
     font-weight: 500;
     color: var(--text-muted);
     text-transform: uppercase;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
+    padding: 29px 0.75rem;
     border-bottom: 0.063rem solid transparent;
     transition: all 0.3s ease;
 }
@@ -137,11 +189,15 @@
     border: 1px solid #304156;
     border-radius: 3px;
     position: absolute;
-    bottom: calc(-100%);
+    top: 90px;
     left: 0;
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
+    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background-clip: padding-box;
-    transition: all 300ms ease-in;
+    transition: opacity 300ms ease-in, visibility 300ms ease-in;
     opacity: 0;
     visibility: hidden;
     z-index: 100;
@@ -153,9 +209,21 @@
 .active_bottm_nav{
     opacity: 1 !important;
     visibility: visible !important;
-    bottom: -170px !important;
-
+    transition: opacity 300ms ease-in, visibility 300ms ease-in !important;
 }
+
+/* Endi xar bir dropdown menyu uchun aloxida stil emas, hamma uchun umumiy stilni qo'llaymiz */
+/* Oldingi har bir dropdown menyu pozitsiyasi uchun stillarni o'chirib tashlaymiz */
+/* 
+.navbar_list_item:nth-child(2) .navbar_list_dropdown.active_bottm_nav {
+    bottom: -120px !important;
+}
+
+.navbar_list_item:nth-child(4) .navbar_list_dropdown.active_bottm_nav {
+    bottom: -120px !important;
+}
+*/
+
 .down_icon {
     display: inline-block;
     width: 0.5rem;
@@ -183,17 +251,61 @@
     border-radius: 3px;
     transition: all 300ms ease-in;
     min-width: 128px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
 }
-.navbar_list_dropdown li a {
+.navbar_list_dropdown li a,
+.navbar_list_dropdown li .dropdown_item_link {
     font-size: 14px;
     color: #a5bbdc;
     text-transform: capitalize !important;
     padding: 12px 8px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
     border-bottom: none;
+    position: relative;
+    box-sizing: border-box;
 }
+
+/* Link butun li elementiga bog'lash uchun */
+.navbar_list_item a, 
+.navbar_list_item .dropdown_link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.navbar_list_dropdown li .linkitem{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #a5bbdc;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.linkitem{
+    width: 100%;
+    height: 100%;
+    display: block !important;
+    box-sizing: border-box;
+}
+.navbar_list_dropdown li a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+}
+
 .navbar_list_dropdown li:hover{
     background-color: rgba(46, 204, 112, 0.396);
 }
@@ -219,8 +331,7 @@
     background-color: rgba(255, 193, 70, 0.307) !important;
 }
 
-/* Kinolar dropdown menyu pozitsiyasini o'zgartirish (2-element) */
-
+/* Mobil ekranlarga maxsus stillar */
 @media (max-width: 1090px) {
     .navbar_container{
         height: auto;
@@ -340,12 +451,20 @@
     background-color: #1c2733; /* Dropdown fon rangi */
     border-top: 1px solid #2c3541;
     border-radius: 0 0 3px 3px;
+    transform: none;
+    left: 0;
+    top: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 
   /* Mobil dropdown menyu - aktiv holatda */
   .navbar_mobile_list .active_bottm_nav {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Mobil dropdown elementlari */
@@ -354,21 +473,25 @@
     margin: 0;
     border-radius: 0;
     background-color: transparent;
+    display: block;
   }
 
   .navbar_mobile_list .navbar_list_dropdown li a {
     padding: 10px 15px;
     text-align: left;
     border-bottom: 1px solid #2c354180;
+    display: block;
+    width: 100%;
   }
 
-  .navbar_mobile_list .navbar_list_dropdown li:last-child a {
-    border-bottom: none;
-  }
-
-  /* Dropdown hoveri */
+  /* Mobil dropdown item hover */
   .navbar_mobile_list .navbar_list_dropdown li:hover {
     background-color: #304156;
+    width: 100%;
+  }
+  
+  .navbar_mobile_list .navbar_list_dropdown li:last-child a {
+    border-bottom: none;
   }
 
   /* Mobil dropdown icon */
@@ -646,6 +769,39 @@
 .navbar_list_dropdown li:active {
   opacity: 0.8;
   transform: scale(0.98);
+}
+
+/* Dropdown menyular uchun mobil versiyada ustma-ust joylashin */
+@media (max-width: 1090px) {
+  .navbar_list_item  {
+    display: flex;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  
+  .navbar_list_dropdown {
+    display: flex;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .navbar_list_dropdown li {
+    width: 100% !important;
+    margin: 3px 0 !important;
+  }
+  
+  .dropdown_active .navbar_list_dropdown,
+  .navbar_list_item.dropdown_active .navbar_list_dropdown,
+  .navbar_mobile_list .dropdown_active .navbar_list_dropdown {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+  
+  .active_bottm_nav {
+    display: flex !important;
+    flex-direction: column !important;
+  }
 }
 
 
